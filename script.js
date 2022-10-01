@@ -71,10 +71,12 @@ function getCoords(event) {
 
    if(event.type ==="touchstart"){
       alert ("I should read the coordinates.")
-      coords[0] = touch.pageX;
-      coords[1] = touch.pageY;
+      var evt = (typeof event.originalEvent === 'undefined') ? event : event.originalEvent;
+      var input = evt.touches[0] || evt.changedTouches[0];
+      coords[0] = input.pageX;
+      coords[1] = input.pageY;
+      alert("i have read the corodinates")
 
-      alert("postion of touch: " + coords[0] +  " " + coords[1])
       // coords[0] = event.touches[0].clientX;
       // coords[1] = event.touches[0].clientY;
    }
