@@ -41,8 +41,15 @@ function startDrag(event) {
    event.preventDefault();
 
    if(event.type === "touchstart"){
-      this.addEventListener("touchmove", moveDrag, false);
-      this.addEventListener("touchend", removeDragListener, false);
+      if(this.addEventListener){
+         this.addEventListener("touchmove", moveDrag, false);
+         this.addEventListener("touchend", removeDragListener, false);
+      }
+      else{
+         this.attachEvent("ontouchmove", moveDrag);
+         this.attachEvent("ontouchend", removeDragListener);
+      }
+     
    }
    else{
       this.addEventListener("mousemove", moveDrag, false);
@@ -73,12 +80,8 @@ function getCoords(event) {
       coords[1] = event.touches[0].clientY;
    }
    else{
-      // alert("i have should read coordinares: ");
-
       coords[0] = event.clientX;
       coords[1] = event.clientY;
-      // alert("i have read the corodinates" + coords[0]);
-
    }
  
    return coords;
