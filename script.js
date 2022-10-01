@@ -33,6 +33,7 @@ function setUpPage() {
 }
 
 
+
 // add event listeners and move object when user starts dragging
 function startDrag(event) {
    this.style.zIndex = onTop; // set z-index to move selected element on top of other elements
@@ -54,8 +55,6 @@ function startDrag(event) {
 
 // calculate new location of dragged object
 function moveDrag(event) {
-
-   // alert("i am called.")
    var currentPos = getCoords(event);
    var deltaX = currentPos[0] - origin[0];
    var deltaY = currentPos[1] - origin[1];
