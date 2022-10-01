@@ -39,6 +39,7 @@ function startDrag(event) {
    this.style.zIndex = onTop; // set z-index to move selected element on top of other elements
    onTop++; // increment z-index counter so next selected element is on top of other elements
    event.preventDefault();
+   alert("touch generated");
 
    if(event.type === "touchstart"){
       this.addEventListener("touchmove", moveDrag, false);
@@ -49,8 +50,6 @@ function startDrag(event) {
    else{
       this.addEventListener("mousemove", moveDrag, false);
       this.addEventListener("mouseup", removeDragListener, false);      
-      alert("touch generated");
-
    }
    
    loc = [this.offsetLeft,this.offsetTop];
