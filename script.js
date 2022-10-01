@@ -21,28 +21,17 @@ function setUpPage() {
    onTop = puzzlePieces.length + 1;
    for (var i = 0; i < puzzlePieces.length; i++) {
       if (puzzlePieces[i].addEventListener) {
-         puzzlePieces[i].addEventListener("mousedown", test, false);
-         puzzlePieces[i].addEventListener("touchstart", test, false);
+         puzzlePieces[i].addEventListener("mousedown", startDrag, false);
+         puzzlePieces[i].addEventListener("touchstart", startDrag, false);
 
       } else if (puzzlePieces[i].attachEvent) {
-         puzzlePieces[i].attachEvent("onmousedown", test);
-         puzzlePieces[i].attachEvent("ontouchstart", test);
+         puzzlePieces[i].attachEvent("onmousedown", startDrag);
+         puzzlePieces[i].attachEvent("ontouchstart", startDrag);
 
       }
    }
 }
 
-function test (event){
-
-if(event.type === "touchstart"){
-   this.addEventListener("touchmove", moveDrag, false);
-   this.addEventListener("touchend", removeDragListener, false);
-}
-else{
-   this.addEventListener("mousemove", moveDrag, false);
-   this.addEventListener("mouseup", removeDragListener, false);      
-}
-}
 
 // add event listeners and move object when user starts dragging
 function startDrag(event) {
@@ -66,7 +55,7 @@ function startDrag(event) {
 // calculate new location of dragged object
 function moveDrag(event) {
 
-   alert("i am called.")
+   // alert("i am called.")
    var currentPos = getCoords(event);
    var deltaX = currentPos[0] - origin[0];
    var deltaY = currentPos[1] - origin[1];
