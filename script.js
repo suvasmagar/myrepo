@@ -43,7 +43,6 @@ function startDrag(event) {
    if(event.type === "touchstart"){
       this.addEventListener("touchmove", moveDrag, false);
       this.addEventListener("touchend", removeDragListener, false);
-      alert("touch has called.")
    }
    else{
       this.addEventListener("mousemove", moveDrag, false);
@@ -69,20 +68,18 @@ function moveDrag(event) {
 function getCoords(event) {
    var coords = [];
 
-   if(event.type ==="touchstart"){
-      alert ("I should read the coordinates.")
-      var evt = (typeof event.originalEvent === 'undefined') ? event : event.originalEvent;
-      var input = evt.touches[0] || evt.changedTouches[0];
-      coords[0] = input.pageX;
-      coords[1] = input.pageY;
-      alert("i have read the corodinates")
-
-      // coords[0] = event.touches[0].clientX;
-      // coords[1] = event.touches[0].clientY;
+   if(event.type ==="touchstart" || event.type == "touchend"){
+      coords[0] = event.touches[0].clientX;
+      coords[1] = event.touches[0].clientY;
+      alert("i have read the corodinates" + coords[0]);
    }
    else{
+      alert("i have should read coordinares: ");
+
       coords[0] = event.clientX;
       coords[1] = event.clientY;
+      alert("i have read the corodinates" + coords[0]);
+
    }
  
    return coords;
