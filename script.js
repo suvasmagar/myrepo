@@ -49,6 +49,8 @@ function startDrag(event) {
    else{
       this.addEventListener("mousemove", moveDrag, false);
       this.addEventListener("mouseup", removeDragListener, false);      
+      alert("touch generated");
+
    }
    
    loc = [this.offsetLeft,this.offsetTop];
