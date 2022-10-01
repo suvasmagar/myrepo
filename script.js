@@ -21,15 +21,19 @@ function setUpPage() {
    onTop = puzzlePieces.length + 1;
    for (var i = 0; i < puzzlePieces.length; i++) {
       if (puzzlePieces[i].addEventListener) {
-         puzzlePieces[i].addEventListener("mousedown", startDrag, false);
-         puzzlePieces[i].addEventListener("touchstart", startDrag, false);
+         puzzlePieces[i].addEventListener("mousedown", test, false);
+         puzzlePieces[i].addEventListener("touchstart", test, false);
 
       } else if (puzzlePieces[i].attachEvent) {
-         puzzlePieces[i].attachEvent("onmousedown", startDrag);
-         puzzlePieces[i].attachEvent("ontouchstart", startDrag);
+         puzzlePieces[i].attachEvent("onmousedown", test);
+         puzzlePieces[i].attachEvent("ontouchstart", test);
 
       }
    }
+}
+
+function test (event){
+   alert ("touch generated:")
 }
 
 // add event listeners and move object when user starts dragging
