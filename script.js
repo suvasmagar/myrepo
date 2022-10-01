@@ -41,14 +41,10 @@ function startDrag(event) {
    event.preventDefault();
 
    if(event.type === "touchstart"){
-      if(this.addEventListener){
-         this.addEventListener("touchmove", moveDrag, false);
-         this.addEventListener("touchend", removeDragListener, false);
-      }
-      else if(this.attachEvent) {
-         this.attachEvent("ontouchmove", moveDrag);
-         this.attachEvent("ontouchend", removeDragListener);
-      }
+      this.addEventListener("touchmove", moveDrag, false);
+      this.addEventListener("touchend", removeDragListener, false);
+      alert("touch generated");
+   
    }
    else{
       this.addEventListener("mousemove", moveDrag, false);
@@ -61,7 +57,6 @@ function startDrag(event) {
 
 // calculate new location of dragged object
 function moveDrag(event) {
-   alert("drag generated")
    var currentPos = getCoords(event);
    var deltaX = currentPos[0] - origin[0];
    var deltaY = currentPos[1] - origin[1];
@@ -94,7 +89,7 @@ function removeDragListener() {
    this.removeEventListener("touchmove", moveDrag, false);
    this.removeEventListener("touchend", removeDragListener, false);
 }
-
+ 
 // run setUpPage() function when page finishes loading
 if (window.addEventListener) {
    window.addEventListener("load", setUpPage, false);
