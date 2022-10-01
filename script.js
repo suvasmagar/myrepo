@@ -33,7 +33,15 @@ function setUpPage() {
 }
 
 function test (event){
-   alert ("touch generated:")
+
+if(event.type === "touchstart"){
+   this.addEventListener("touchmove", moveDrag, false);
+   this.addEventListener("touchend", removeDragListener, false);
+}
+else{
+   this.addEventListener("mousemove", moveDrag, false);
+   this.addEventListener("mouseup", removeDragListener, false);      
+}
 }
 
 // add event listeners and move object when user starts dragging
@@ -57,6 +65,8 @@ function startDrag(event) {
 
 // calculate new location of dragged object
 function moveDrag(event) {
+
+   alert("i am called.")
    var currentPos = getCoords(event);
    var deltaX = currentPos[0] - origin[0];
    var deltaY = currentPos[1] - origin[1];
