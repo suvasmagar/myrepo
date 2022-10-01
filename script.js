@@ -67,8 +67,10 @@ function getCoords(event) {
    var coords = [];
 
    if(event.type ==="touchstart"){
-      coords[0] = event.touches[0].clientX;
-      coords[1] = event.touches[0].clientY;
+      coords[0] = touch.pageX;
+      coords[1] = touch.pageY;
+      // coords[0] = event.touches[0].clientX;
+      // coords[1] = event.touches[0].clientY;
    }
    else{
       coords[0] = event.clientX;
